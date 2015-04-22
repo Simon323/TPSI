@@ -9,5 +9,7 @@ namespace REST.Nancy.Reporitories.Interfaces
     public interface IDoctorRepository
     {
         void Add(Doctors item);
+        List<Doctors> GetDoctorsBySpecAndCity(string specialization, string city);
+        Doctors GetDoctorById(int id);
     }
 }

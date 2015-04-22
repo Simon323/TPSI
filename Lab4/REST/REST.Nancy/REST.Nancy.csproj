@@ -52,6 +52,7 @@
     <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
+    <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Web.config" />
@@ -61,6 +62,7 @@
     <Compile Include="Helpers\DateHelper.cs" />
     <Compile Include="Helpers\ReviewHelper.cs" />
     <Compile Include="Helpers\VisitsHelper.cs" />
+    <Compile Include="Models\DisplayModels\DoctorsDisplay.cs" />
     <Compile Include="Models\StaticModel.cs" />
     <Compile Include="HelloModule.cs" />
     <Compile Include="Helpers\DoctorHelper.cs" />

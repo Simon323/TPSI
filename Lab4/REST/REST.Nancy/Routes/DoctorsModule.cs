@@ -1,9 +1,14 @@
 ﻿using Nancy;
+using Nancy.Json;
 using REST.Nancy.Models;
+using REST.Nancy.Models.DisplayModels;
+using REST.Nancy.Reporitories;
+using REST.Nancy.Reporitories.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Xml.Linq;
 
 namespace REST.Nancy.Routes
 {
@@ -11,26 +16,72 @@ namespace REST.Nancy.Routes
     {
         public DoctorsModule() : base("/doctors")
         {
-            Get["/list"] = parameters =>
+            //Get["/list"] = parameters =>
+            //{
+
+            //    DoctorsBasic firstDoctor = (DoctorsBasic)StaticModel.DoctorsList.FirstOrDefault();
+
+            //    JavaScriptSerializer js = new JavaScriptSerializer();
+            //    string json = js.Serialize(firstDoctor);
+
+
+            //    var response = (Response)json;
+            //    response.ContentType = "application/json";
+                
+            //    return response;
+
+            //};
+
+            Get["/{specialization}/{city}"] = parameters =>
             {
+                IDoctorRepository doctorRepository = new DoctorRepository();
+                JavaScriptSerializer js = new JavaScriptSerializer();
+                List<DoctorsBasic> basicDoctors = new List<DoctorsBasic>();
 
-                var xxx = StaticModel.DoctorsList.FirstOrDefault();
+                var doctorsList = doctorRepository.GetDoctorsBySpecAndCity(parameters.specialization, parameters.city);
 
-                //string output = XElement xml = new XElement("contacts",
-                //                cc.Select(i => new XElement("contact", 
-                //                    new XAttribute("type", i.Type), 
-                //                    i.ContactValue
-                //                )));
+                foreach (var item in doctorsList)
+                {
+                    basicDoctors.Add(new DoctorsBasic
+                    {
+                        id = item.id,
+                        Name = item.Name,
+                        Surname = item.Surname,
+                        City = item.City,
+                        Specialization = item.Specialization
+                    });
+                }
 
-                return xxx.Name + " " + xxx.Surname;
+                string json = js.Serialize(basicDoctors);
+                var response = (Response)json;
+
+                response.ContentType = "application/json";
+
+                return response;
+
             };
 
-            Get["/delete"] = parameters =>
+            Get["/{id}"] = parameters =>
             {
+                IDoctorRepository doctorRepository = new DoctorRepository();
+                JavaScriptSerializer js = new JavaScriptSerializer();
 
-                StaticModel.DoctorsList.RemoveAt(0);
+                var doctor = doctorRepository.GetDoctorById(parameters.id);
 
-                return "poszło";
+                DoctorsInfo doctorInfo = new DoctorsInfo
+                {
+                    Name = doctor.Name,
+                    Surname = doctor.Surname,
+                    Reviews = doctor.Reviews
+                };
+
+                string json = js.Serialize(doctorInfo);
+                var response = (Response)json;
+
+                response.ContentType = "application/json";
+
+                return response;
+
             };
         }
     }

@@ -14,5 +14,15 @@ namespace REST.Nancy.Reporitories
             StaticModel.DoctorsList.Add(item);
         }
 
+        public List<Doctors> GetDoctorsBySpecAndCity(string specialization, string city)
+        {
+            return StaticModel.DoctorsList.Where(x => x.Specialization == specialization && x.City == city).ToList();
+        }
+
+        public Doctors GetDoctorById(int id)
+        {
+            return StaticModel.DoctorsList.FirstOrDefault(x => x.id == id);
+        }
+
     }
 }
