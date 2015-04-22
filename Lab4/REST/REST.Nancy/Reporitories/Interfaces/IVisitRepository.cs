@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace REST.Nancy.Routes
+namespace REST.Nancy.Reporitories.Interfaces
 {
-    public class DatesRepository
+    public interface IVisitRepository
     {
     }
 }

@@ -5,13 +5,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace REST.Nancy.Reporitories
+namespace REST.Nancy.Routes
 {
-    public class ReviewRepository : IReviewRepository
+    public class DateRepository : IDateRepository
     {
-        public void Add(Reviews item)
+        public void Add(Dates item)
         {
-            StaticModel.ReviewsList.Add(item);
+            StaticModel.DatesList.Add(item);
         }
     }
 }

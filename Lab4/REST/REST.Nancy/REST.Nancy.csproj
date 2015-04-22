@@ -70,15 +70,15 @@
     <Compile Include="Models\Visits.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reporitories\DoctorRepository.cs" />
-    <Compile Include="Reporitories\Interfaces\IDatesRepository.cs" />
+    <Compile Include="Reporitories\Interfaces\IDateRepository.cs" />
     <Compile Include="Reporitories\Interfaces\IDoctorRepository.cs" />
     <Compile Include="Reporitories\Interfaces\IReviewRepository.cs" />
-    <Compile Include="Reporitories\Interfaces\IVisitsRepository.cs" />
+    <Compile Include="Reporitories\Interfaces\IVisitRepository.cs" />
     <Compile Include="Reporitories\ReviewRepository.cs" />
     <Compile Include="ResourceModule.cs" />
-    <Compile Include="Reporitories\DatesRepository.cs" />
+    <Compile Include="Reporitories\DateRepository.cs" />
     <Compile Include="Routes\RootModule.cs" />
-    <Compile Include="Reporitories\VisitsRepository.cs" />
+    <Compile Include="Reporitories\VisitRepository.cs" />
     <Compile Include="Simple.cs" />
   </ItemGroup>
   <ItemGroup>

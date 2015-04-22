@@ -10,7 +10,7 @@ namespace REST.Nancy.Helpers
 {
     public class DoctorHelper
     {
-        public static void FillDoctorList()
+        public static void FillDoctorsList()
         {
             IDoctorRepository doctorRepository = new DoctorRepository();
 

@@ -14,9 +14,11 @@ namespace REST.Nancy.Routes
         {
             Get["/"] = parameters =>
             {
-                DoctorHelper.FillDoctorList();
+                DoctorHelper.FillDoctorsList();
+                ReviewHelper.FillReviewsList();
 
                 var xxx = StaticModel.DoctorsList;
+                var zzz = StaticModel.ReviewsList;
 
                 return "Hello World ? działa";
             };
