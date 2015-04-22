@@ -14,16 +14,55 @@ namespace REST.Nancy.Helpers
         {
             IDoctorRepository doctorRepository = new DoctorRepository();
 
-            Doctors doctor = new Doctors
+            doctorRepository.Add(new Doctors
             {
                 id = 1,
                 Name = "Harrison",
                 Surname = "Wells",
-                City = "Central City"
+                City = "Poznan",
+                Specialization = "Dentysta"
 
-            };
+            });
 
-            doctorRepository.Add(doctor);
+            doctorRepository.Add(new Doctors
+            {
+                id = 2,
+                Name = "Oliver",
+                Surname = "Queen",
+                City = "Warszawa",
+                Specialization = "Chirurg"
+
+            });
+
+            doctorRepository.Add(new Doctors
+            {
+                id = 3,
+                Name = "Barry",
+                Surname = "Allen",
+                City = "Poznan",
+                Specialization = "Chirurg"
+
+            });
+
+            doctorRepository.Add(new Doctors
+            {
+                id = 4,
+                Name = "Adam",
+                Surname = "Monroe",
+                City = "Krakow",
+                Specialization = "Okulista"
+
+            });
+
+            doctorRepository.Add(new Doctors
+            {
+                id = 5,
+                Name = "Caitlin",
+                Surname = "Snow",
+                City = "Poznan",
+                Specialization = "Dentysta"
+
+            });
         }
     }
 }

@@ -15,6 +15,5 @@ namespace REST.Nancy.Models
         public int idDoctor { get; set; }
         public string Description { get; set; }
 
-        public virtual Doctors Doctors { get; set; }
     }
 }

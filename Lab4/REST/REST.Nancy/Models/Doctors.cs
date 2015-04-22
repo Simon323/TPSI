@@ -9,17 +9,18 @@ namespace REST.Nancy.Models
     {
         public Doctors()
         {
-            this.Reviews = new HashSet<Reviews>();
-            this.Dates = new HashSet<Dates>();
-            this.Visits = new HashSet<Visits>();
+            this.Reviews = new List<Reviews>();
+            this.Dates = new List<Dates>();
+            this.Visits = new List<Visits>();
         }
         public int id { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
         public string City { get; set; }
+        public string Specialization { get; set; }
 
-        public virtual ICollection<Reviews> Reviews { get; set; }
-        public virtual ICollection<Dates> Dates { get; set; }
-        public virtual ICollection<Visits> Visits { get; set; }
+        public List<Reviews> Reviews { get; set; }
+        public List<Dates> Dates { get; set; }
+        public List<Visits> Visits { get; set; }
     }
 }

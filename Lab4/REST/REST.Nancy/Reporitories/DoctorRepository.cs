@@ -13,5 +13,6 @@ namespace REST.Nancy.Reporitories
         {
             StaticModel.DoctorsList.Add(item);
         }
+
     }
 }

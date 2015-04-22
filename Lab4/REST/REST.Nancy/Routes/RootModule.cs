@@ -14,11 +14,17 @@ namespace REST.Nancy.Routes
         {
             Get["/"] = parameters =>
             {
-                DoctorHelper.FillDoctorsList();
-                ReviewHelper.FillReviewsList();
+                if (!StaticModel.isInit)
+                {
+                    DoctorHelper.FillDoctorsList();
+                    ReviewHelper.FillReviewsList();
+                    DateHelper.FillDateList();
+                    StaticModel.isInit = true;
+                }
+                
 
                 var xxx = StaticModel.DoctorsList;
-                var zzz = StaticModel.ReviewsList;
+                //var zzz = StaticModel.ReviewsList;
 
                 return "Hello World ? działa";
             };

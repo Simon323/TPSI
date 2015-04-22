@@ -11,7 +11,7 @@ namespace REST.Nancy.Routes
     {
         public void Add(Dates item)
         {
-            StaticModel.DatesList.Add(item);
+            StaticModel.DoctorsList.Where(x => x.id == item.idDoctor).FirstOrDefault().Dates.Add(item);
         }
     }
 }
