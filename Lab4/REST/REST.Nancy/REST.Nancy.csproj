@@ -77,6 +77,7 @@
     <Compile Include="Reporitories\ReviewRepository.cs" />
     <Compile Include="ResourceModule.cs" />
     <Compile Include="Reporitories\DateRepository.cs" />
+    <Compile Include="Routes\DoctorsModule.cs" />
     <Compile Include="Routes\RootModule.cs" />
     <Compile Include="Reporitories\VisitRepository.cs" />
     <Compile Include="Simple.cs" />

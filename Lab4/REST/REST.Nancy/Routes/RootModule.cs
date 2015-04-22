@@ -24,7 +24,6 @@ namespace REST.Nancy.Routes
                 
 
                 var xxx = StaticModel.DoctorsList;
-                //var zzz = StaticModel.ReviewsList;
 
                 return "Hello World ? działa";
             };
