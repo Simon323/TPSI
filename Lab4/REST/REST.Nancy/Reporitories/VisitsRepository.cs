@@ -7,11 +7,11 @@ using System.Web;
 
 namespace REST.Nancy.Routes
 {
-    public class DateRepository : IDateRepository
+    public class VisitsRepository : IVisitsRepository
     {
-        public void Add(Dates item)
+        public void Add(Visits item)
         {
-            StaticModel.DoctorsList.Where(x => x.id == item.idDoctor).FirstOrDefault().Dates.Add(item);
+            StaticModel.DoctorsList.Where(x => x.id == item.idDoctor).FirstOrDefault().Visits.Add(item);
         }
     }
 }

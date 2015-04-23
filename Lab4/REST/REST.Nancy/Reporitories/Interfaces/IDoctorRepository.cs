@@ -11,5 +11,6 @@ namespace REST.Nancy.Reporitories.Interfaces
         void Add(Doctors item);
         List<Doctors> GetDoctorsBySpecAndCity(string specialization, string city);
         Doctors GetDoctorById(int id);
+        List<Visits> GetVisitsList(bool isFree, DateTime date, int id);
     }
 }

@@ -6,8 +6,8 @@ using System.Web;
 
 namespace REST.Nancy.Reporitories.Interfaces
 {
-    public interface IDateRepository
+    public interface IVisitsRepository
     {
-        void Add(Dates item);
+        void Add(Visits item);
     }
 }

@@ -10,7 +10,6 @@ namespace REST.Nancy.Models
         public Doctors()
         {
             this.Reviews = new List<Reviews>();
-            this.Dates = new List<Dates>();
             this.Visits = new List<Visits>();
         }
 
@@ -21,7 +20,6 @@ namespace REST.Nancy.Models
         public string Specialization { get; set; }
 
         public List<Reviews> Reviews { get; set; }
-        public List<Dates> Dates { get; set; }
         public List<Visits> Visits { get; set; }
     }
 }

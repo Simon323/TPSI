@@ -18,7 +18,7 @@ namespace REST.Nancy.Routes
                 {
                     DoctorHelper.FillDoctorsList();
                     ReviewHelper.FillReviewsList();
-                    DateHelper.FillDateList();
+                    VisitsHelper.FillVisitsList();
                     StaticModel.isInit = true;
                 }
 

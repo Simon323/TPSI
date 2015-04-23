@@ -24,5 +24,10 @@ namespace REST.Nancy.Reporitories
             return StaticModel.DoctorsList.FirstOrDefault(x => x.id == id);
         }
 
+        public List<Visits> GetVisitsList(bool isFree, DateTime date, int id)
+        {
+            return StaticModel.DoctorsList.Where(x => x.id == id).FirstOrDefault().Visits.Where(y => y.isFree == isFree && y.Date >= date).ToList();
+        }
+
     }
 }

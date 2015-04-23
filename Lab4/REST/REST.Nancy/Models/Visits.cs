@@ -9,10 +9,13 @@ namespace REST.Nancy.Models
     {
         public Visits()
         {
-
+            this.Patient = new Patient();
         }
         public int id { get; set; }
         public int idDoctor { get; set; }
-        public int idDate { get; set; }
+        public DateTime Date { get; set; }
+        public bool isFree { get; set; }
+        public Patient Patient { get; set; }
+
     }
 }

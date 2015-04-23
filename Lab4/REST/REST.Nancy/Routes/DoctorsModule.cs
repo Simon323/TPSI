@@ -7,6 +7,7 @@ using REST.Nancy.Reporitories;
 using REST.Nancy.Reporitories.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -19,7 +20,7 @@ namespace REST.Nancy.Routes
         public DoctorsModule() : base("/doctors")
         {
 
-            Get["/{specialization}/{city}"] = parameters =>
+            Get["/specialization/{specialization}/{city}"] = parameters =>
             {
                 IDoctorRepository doctorRepository = new DoctorRepository();
                 JavaScriptSerializer js = new JavaScriptSerializer();
@@ -40,9 +41,11 @@ namespace REST.Nancy.Routes
                 }
 
                 string json = js.Serialize(basicDoctors);
+
                 var response = (Response)json;
 
                 response.ContentType = "application/json";
+                response.StatusCode = HttpStatusCode.OK;
 
                 return response;
 
@@ -63,15 +66,17 @@ namespace REST.Nancy.Routes
                 };
 
                 string json = js.Serialize(doctorInfo);
+
                 var response = (Response)json;
 
                 response.ContentType = "application/json";
+                response.StatusCode = HttpStatusCode.OK;
 
                 return response;
 
             };
 
-            Post["/opinion/{id}"] = parameters =>
+            Post["/{id}/opinion"] = parameters =>
             {
 
                 string content = "";
@@ -93,7 +98,45 @@ namespace REST.Nancy.Routes
 
                 reviewRepository.Add(reviews);
 
-                return "Dodano";
+                return Negotiate.WithStatusCode(HttpStatusCode.Created);
+            };
+
+            Get["/{id}/visit"] = parameters =>
+            {
+                IDoctorRepository doctorRepository = new DoctorRepository();
+                JavaScriptSerializer js = new JavaScriptSerializer();
+                var statusQuery = Request.Query["status"];
+                var dateQuesy = Request.Query["date"];
+
+                bool status = true;
+                DateTime date;
+
+                if (statusQuery.Value != null)
+                    status = Boolean.Parse(statusQuery.Value);
+
+                if (dateQuesy.Value != null)
+                    date = DateTime.ParseExact(dateQuesy.Value, "yyyyMMdd", CultureInfo.InvariantCulture);
+                else
+                    date = DateTime.Now;
+
+                List<Visits> visitsList = doctorRepository.GetVisitsList(status, date, parameters.id);
+
+                string json = js.Serialize(visitsList);
+
+                //return Negotiate.WithStatusCode(HttpStatusCode.OK).WithModel(json).WithContentType("application/json");
+
+                var response = (Response)json;
+
+                response.ContentType = "application/json";
+                response.StatusCode = HttpStatusCode.OK;
+
+                return response;
+
+            };
+
+            Get["/{id}/visit"] = parameters =>
+            {
+                return "ok";
             };
 
         }
