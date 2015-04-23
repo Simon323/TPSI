@@ -12,5 +12,7 @@ namespace REST.Nancy.Reporitories.Interfaces
         List<Doctors> GetDoctorsBySpecAndCity(string specialization, string city);
         Doctors GetDoctorById(int id);
         List<Visits> GetVisitsList(bool isFree, DateTime date, int id);
+        bool BookVisit(int id, DateTime date, string name, string surname);
+        bool CancelVisit(int id, DateTime date);
     }
 }

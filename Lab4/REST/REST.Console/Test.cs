@@ -13,9 +13,12 @@ namespace REST.Nancy.Routes
     {
         static void Main(string[] args)
         {
-            var browser = new Browser(with => with.Module(new RootModule()));
+            string address = "localhost:7822";
+            string city = "Poznan";
+            string specialization = "Dentysta";
+            string name = "Jan";
+            string surname = "Kowalski";
 
-            System.Console.ReadLine();
         }
 
 

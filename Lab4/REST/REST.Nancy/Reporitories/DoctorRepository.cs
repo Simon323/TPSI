@@ -29,5 +29,39 @@ namespace REST.Nancy.Reporitories
             return StaticModel.DoctorsList.Where(x => x.id == id).FirstOrDefault().Visits.Where(y => y.isFree == isFree && y.Date >= date).ToList();
         }
 
+        public bool BookVisit(int id, DateTime date, string name, string surname)
+        {
+            bool isBook = false;
+
+            Visits visit = StaticModel.DoctorsList.FirstOrDefault(x => x.id == id).Visits.FirstOrDefault(y => y.Date == date && y.isFree == true);
+
+            if (visit != null)
+            {
+                visit.Patient.Name = name;
+                visit.Patient.Surname = surname;
+                visit.isFree = false;
+                isBook = true;
+            }
+
+            return isBook;
+        }
+
+        public bool CancelVisit(int id, DateTime date)
+        {
+            bool isCancel = false;
+
+            Visits visit = StaticModel.DoctorsList.FirstOrDefault(x => x.id == id).Visits.FirstOrDefault(y => y.Date == date && y.isFree == false);
+
+            if (visit != null)
+            {
+                visit.Patient.Name = "";
+                visit.Patient.Surname = "";
+                visit.isFree = true;
+                isCancel = true;
+
+            }
+
+            return isCancel;
+        }
     }
 }

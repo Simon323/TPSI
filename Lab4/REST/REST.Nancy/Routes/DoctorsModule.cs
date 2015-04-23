@@ -134,9 +134,34 @@ namespace REST.Nancy.Routes
 
             };
 
-            Get["/{id}/visit"] = parameters =>
+            Post["/{id}/visit/book/{date}/{name}/{surname}"] = parameters =>
             {
-                return "ok";
+                IDoctorRepository doctorRepository = new DoctorRepository();
+
+                DateTime date = DateTime.ParseExact(parameters.date, "yyyyMMdd", CultureInfo.InvariantCulture);
+
+
+                bool isBook = doctorRepository.BookVisit(parameters.id, date, parameters.name, parameters.surname);
+
+                if(isBook)
+                    return Negotiate.WithStatusCode(HttpStatusCode.Created);
+                else
+                    return Negotiate.WithStatusCode(HttpStatusCode.BadRequest);
+
+            };
+
+            Delete["/{id}/visit/cancel/{date}"] = parameters =>
+            {
+                IDoctorRepository doctorRepository = new DoctorRepository();
+
+                DateTime date = DateTime.ParseExact(parameters.date, "yyyyMMdd", CultureInfo.InvariantCulture);
+
+                bool isCancel = doctorRepository.CancelVisit(parameters.id, date);
+
+                if (isCancel)
+                    return Negotiate.WithStatusCode(HttpStatusCode.OK);
+                else
+                    return Negotiate.WithStatusCode(HttpStatusCode.BadRequest);
             };
 
         }
