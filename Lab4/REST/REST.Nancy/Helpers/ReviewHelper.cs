@@ -119,5 +119,23 @@ namespace REST.Nancy.Helpers
             });
 
         }
+
+        public static int GetNewReviewId()
+        {
+            int id = 0;
+
+            foreach (var doctor in StaticModel.DoctorsList)
+            {
+                foreach (var opinion in doctor.Reviews)
+                {
+                    if (opinion.id > id)
+                        id = opinion.id;
+                }
+            }
+
+            id++;
+
+            return id;
+        }
     }
 }

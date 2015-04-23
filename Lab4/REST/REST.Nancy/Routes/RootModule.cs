@@ -21,11 +21,14 @@ namespace REST.Nancy.Routes
                     DateHelper.FillDateList();
                     StaticModel.isInit = true;
                 }
-                
+
+                //string senderName = Request.Form.name.Value.Trim();
+                //string senderAddress = Request.Form.email.Value.Trim();
 
                 var xxx = StaticModel.DoctorsList;
 
                 return "Nancy Run !";
+
             };
         }
     }

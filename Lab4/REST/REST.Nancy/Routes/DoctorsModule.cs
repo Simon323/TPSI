@@ -1,11 +1,13 @@
 ﻿using Nancy;
 using Nancy.Json;
+using REST.Nancy.Helpers;
 using REST.Nancy.Models;
 using REST.Nancy.Models.DisplayModels;
 using REST.Nancy.Reporitories;
 using REST.Nancy.Reporitories.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Xml.Linq;
@@ -67,6 +69,31 @@ namespace REST.Nancy.Routes
 
                 return response;
 
+            };
+
+            Post["/opinion/{id}"] = parameters =>
+            {
+
+                string content = "";
+                IReviewRepository reviewRepository = new ReviewRepository();
+
+                using (StreamReader reader = new StreamReader(Request.Body))
+                {
+                    content = reader.ReadToEnd();
+                }
+
+                int id = ReviewHelper.GetNewReviewId();
+
+                Reviews reviews = new Reviews
+                {
+                    id = id,
+                    idDoctor = parameters.id,
+                    Description = content
+                };
+
+                reviewRepository.Add(reviews);
+
+                return "Dodano";
             };
 
         }
