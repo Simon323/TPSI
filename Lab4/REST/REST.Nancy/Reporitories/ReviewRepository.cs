@@ -13,5 +13,6 @@ namespace REST.Nancy.Reporitories
         {
             StaticModel.DoctorsList.Where(x => x.id == item.idDoctor).FirstOrDefault().Reviews.Add(item);
         }
+
     }
 }

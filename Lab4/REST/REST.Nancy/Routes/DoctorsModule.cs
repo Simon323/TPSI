@@ -16,21 +16,6 @@ namespace REST.Nancy.Routes
     {
         public DoctorsModule() : base("/doctors")
         {
-            //Get["/list"] = parameters =>
-            //{
-
-            //    DoctorsBasic firstDoctor = (DoctorsBasic)StaticModel.DoctorsList.FirstOrDefault();
-
-            //    JavaScriptSerializer js = new JavaScriptSerializer();
-            //    string json = js.Serialize(firstDoctor);
-
-
-            //    var response = (Response)json;
-            //    response.ContentType = "application/json";
-                
-            //    return response;
-
-            //};
 
             Get["/{specialization}/{city}"] = parameters =>
             {
@@ -83,6 +68,7 @@ namespace REST.Nancy.Routes
                 return response;
 
             };
+
         }
     }
 }
