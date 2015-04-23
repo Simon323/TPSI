@@ -63,5 +63,35 @@ namespace REST.Nancy.Reporitories
 
             return isCancel;
         }
+
+        public bool BookFirstFreeTerm(string specialization, string city, string name, string surname)
+        {
+            DateTime date;
+            Visits visitToUpdate;
+            bool isFirst = true;
+
+            List<Doctors> doctorsList = StaticModel.DoctorsList.Where(x => x.Specialization == specialization).ToList();
+
+            foreach (var doctor in doctorsList)
+            {
+                foreach (var visit in doctor.Visits)
+                {
+                    if (isFirst)
+                    {
+                        date = visit.Date;
+                        visitToUpdate = visit;
+                        isFirst = false;
+                    }
+
+                    //if (date > visit.Date)
+                    //{
+                    //    date = visit.Date;
+                    //}
+                        
+                }
+            }
+
+            return true;
+        }
     }
 }
