@@ -63,6 +63,7 @@
     <Compile Include="Helpers\ReviewHelper.cs" />
     <Compile Include="Helpers\VisitsHelper.cs" />
     <Compile Include="Models\DisplayModels\DoctorsDisplay.cs" />
+    <Compile Include="Models\Patient.cs" />
     <Compile Include="Models\StaticModel.cs" />
     <Compile Include="HelloModule.cs" />
     <Compile Include="Helpers\DoctorHelper.cs" />
