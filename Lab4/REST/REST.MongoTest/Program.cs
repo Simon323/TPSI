@@ -13,10 +13,13 @@ namespace REST.MongoTest
     {
         static void Main(string[] args)
         {
-            DbContext<Book> ctx = new DbContext<Book>();
-            Book book = new Book { Title = "AntMan", ISBN = "65656565656", Publisher = "Hank Pym" };
 
-            //ctx.Collection.Save(book);
+            #region Mongo Sample
+
+            DbContext<Book> ctx = new DbContext<Book>();
+            Book book = new Book { Title = "Havkeye", ISBN = "787878787", Publisher = "Clint Barton" };
+
+            ctx.Collection.Save(book);
             var xxx = ctx.Collection.AsQueryable().ToList();
 
             DbContext<Persons> ctxPersons = new DbContext<Persons>();
@@ -29,7 +32,7 @@ namespace REST.MongoTest
 
             Persons person2 = new Persons
             {
-                Name =  "Adam",
+                Name = "Adam",
                 Surname = "Qwe"
             };
 
@@ -48,9 +51,15 @@ namespace REST.MongoTest
             //remove
             //ctxPersons.Collection.Remove(Query<Persons>.EQ(x=> x.Name, "Adam"));
             var query = Query.And(Query<Persons>.EQ(x => x.Name, "Adam"), Query<Persons>.EQ(x => x.Name, "Ada"));
-            ctxPersons.Collection.Remove(query);
+            //ctxPersons.Collection.Remove(query);
 
             //ctxPersons.Collection.Save(person);
+
+            #endregion
+
+            #region Fill Database
+            
+            #endregion
 
             Console.ReadKey();
         }

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace REST.Model
+namespace REST.Model.Repository.IRepository
 {
-    public class Class1
+    public interface IVisitsRepositiry
     {
     }
 }

@@ -12,6 +12,7 @@ namespace REST.MongoTest
     {
         //[BsonId]
         public ObjectId Id { get; set; }
+        public ObjectId Klucz { get; set; }
         public string ISBN { get; set; }
         public string Title { get; set; }
         public string Publisher { get; set; }
