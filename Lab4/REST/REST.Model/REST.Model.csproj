@@ -57,13 +57,18 @@
     <Compile Include="Entity\Reviews.cs" />
     <Compile Include="Entity\Visits.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\DoctorsRepository.cs" />
+    <Compile Include="Repository\IRepository\IDoctorsRepository.cs" />
+    <Compile Include="Repository\IRepository\IReviewsRepository.cs" />
+    <Compile Include="Repository\IRepository\IVisitsRepositiry.cs" />
+    <Compile Include="Repository\ReviewsRepository.cs" />
+    <Compile Include="Repository\VisitsRepositiry.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Model\" />
-    <Folder Include="Repository\IRepository\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
