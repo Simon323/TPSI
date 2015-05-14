@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "REST.Nancy", "REST.Nancy\RE
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "REST.Console", "REST.Console\REST.Console.csproj", "{A306127A-97F5-4BC2-93C7-69C715801C84}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "REST.Model", "REST.Model\REST.Model.csproj", "{2A82B243-C8BC-4D2E-B829-EC9C87455233}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "REST.MongoTest", "REST.MongoTest\REST.MongoTest.csproj", "{F346B42E-BCE1-48A5-AD80-8EDC2EC80573}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{A306127A-97F5-4BC2-93C7-69C715801C84}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A306127A-97F5-4BC2-93C7-69C715801C84}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A306127A-97F5-4BC2-93C7-69C715801C84}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A82B243-C8BC-4D2E-B829-EC9C87455233}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A82B243-C8BC-4D2E-B829-EC9C87455233}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A82B243-C8BC-4D2E-B829-EC9C87455233}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A82B243-C8BC-4D2E-B829-EC9C87455233}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F346B42E-BCE1-48A5-AD80-8EDC2EC80573}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F346B42E-BCE1-48A5-AD80-8EDC2EC80573}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F346B42E-BCE1-48A5-AD80-8EDC2EC80573}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F346B42E-BCE1-48A5-AD80-8EDC2EC80573}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
