@@ -17,5 +17,10 @@ namespace REST.Model.Repository
         {
             ctx = new DbContext<Reviews>();
         }
+
+        public void Add(Reviews review)
+        {
+            ctx.Collection.Save(review);
+        }
     }
 }

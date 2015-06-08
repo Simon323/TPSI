@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MongoDB.Bson;
 using MongoDB.Driver;
 using MongoDB.Driver.Builders;
 using MongoDB.Driver.Linq;
@@ -17,11 +18,12 @@ namespace REST.MongoTest
 
             #region Mongo Sample
 
-            /*DbContext<Book> ctx = new DbContext<Book>();
+            DbContext<Book> ctx = new DbContext<Book>();
             Book book = new Book { Title = "Havkeye", ISBN = "787878787", Publisher = "Clint Barton" };
 
-            ctx.Collection.Save(book);
-            var xxx = ctx.Collection.AsQueryable().ToList();
+            //ctx.Collection.Save(book);
+            var id = new ObjectId("5553d72749e25a3e987c8087");
+            var xxx = ctx.Collection.AsQueryable().ToList().Where(x=> x.Id == id).FirstOrDefault();
 
             DbContext<Persons> ctxPersons = new DbContext<Persons>();
             var toUpdate = ctxPersons.Collection.AsQueryable().First();
@@ -55,48 +57,11 @@ namespace REST.MongoTest
             //ctxPersons.Collection.Remove(query);
 
             //ctxPersons.Collection.Save(person);
-            */
+           
 
             #endregion
 
-            #region Fill Database
-
-            bool condition = true;
-
-            while (condition)
-            {
-                Console.WriteLine();
-            }
-
-            List<Doctors> list = new List<Doctors>();
-
-            list.Add(new Doctors
-            {
-                Name = "Harrison",
-                Surname = "Wells",
-                City = "Poznan",
-                Specialization = "Kardiolog"
-            });
-
-            list.Add(new Doctors
-            {
-                Name = "Harrison",
-                Surname = "Wells",
-                City = "Poznan",
-                Specialization = "Kardiolog"
-            });
-
-            list.Add(new Doctors
-            {
-                Name = "Harrison",
-                Surname = "Wells",
-                City = "Poznan",
-                Specialization = "Kardiolog"
-            });
             
-
-            #endregion
-
             Console.ReadKey();
         }
     }
