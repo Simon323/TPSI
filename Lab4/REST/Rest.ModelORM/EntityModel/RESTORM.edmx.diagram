@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="000aa3e7fe684c2e80c5ce939aba806a" Name="Diagram1">
+        <EntityTypeShape EntityType="RESTModel.Comment" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="RESTModel.Doctor" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RESTModel.Patient" Width="1.5" PointX="0.75" PointY="7.5" IsExpanded="true" />
+        <AssociationConnector Association="RESTModel.FK_Comments_Doctors" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="RESTModel.Visit" Width="1.5" PointX="3" PointY="7.375" />
+        <AssociationConnector Association="RESTModel.FK_Visits_Doctors" />
+        <AssociationConnector Association="RESTModel.FK_Visits_Patients" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
