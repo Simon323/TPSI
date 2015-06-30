@@ -21,6 +21,21 @@ namespace REST.Nancy.Routes
         public DoctorsModule() : base("/doctors")
         {
 
+            //Get["/"] = parameters =>
+            //{
+            //    Rest.ModelORM.Repository.IRepository.IDoctorsRepository doctorsRepository = new Rest.ModelORM.Repository.DoctorsRepository();
+            //    var doctorsList = doctorsRepository.GetAll().ToList();
+            //    JavaScriptSerializer js = new JavaScriptSerializer();
+
+            //    string json = js.Serialize(doctorsList);
+            //    var response = (Response)json;
+
+            //    response.ContentType = "application/json";
+            //    response.StatusCode = HttpStatusCode.OK;
+
+            //    return response;
+            //};
+
             Get["/specialization/{specialization}/{city}"] = parameters =>
             {
                 IDoctorRepository doctorRepository = new DoctorRepository();

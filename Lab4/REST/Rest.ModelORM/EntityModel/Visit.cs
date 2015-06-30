@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Rest.ModelORM.EntityModel
+namespace REST.ModelORM.EntityModel
 {
     using System;
     using System.Collections.Generic;

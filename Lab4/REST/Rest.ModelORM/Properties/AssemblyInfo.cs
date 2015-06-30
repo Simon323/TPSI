@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Rest.ModelORM")]
+[assembly: AssemblyTitle("REST.ModelORM")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Rest.ModelORM")]
+[assembly: AssemblyProduct("REST.ModelORM")]
 [assembly: AssemblyCopyright("Copyright ©  2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("b0fcc20a-c027-4957-a9ca-101297c14e0e")]
+[assembly: Guid("1fbcaae9-6638-4d8c-b3e2-3e2dd4c84021")]
 
 // Version information for an assembly consists of the following four values:
 //
