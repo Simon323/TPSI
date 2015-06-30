@@ -12,6 +12,7 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Xml.Linq;
+using Nancy.ModelBinding;
 
 namespace REST.Nancy.Routes
 {
@@ -78,6 +79,7 @@ namespace REST.Nancy.Routes
 
             Post["/{id}/opinion"] = parameters =>
             {
+                var bind = this.Bind<Patient>();
 
                 string content = "";
                 IReviewRepository reviewRepository = new ReviewRepository();
