@@ -18,7 +18,7 @@ namespace REST.ModelORM.EntityModel
         public int DoctorId { get; set; }
         public System.DateTime Date { get; set; }
         public bool IsFree { get; set; }
-        public int PatientId { get; set; }
+        public Nullable<int> PatientId { get; set; }
     
         public virtual Doctor Doctor { get; set; }
         public virtual Patient Patient { get; set; }

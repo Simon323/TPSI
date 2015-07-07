@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using REST.ModelORM.Models;
 
 namespace REST.ModelORM.Repository
 {
@@ -36,6 +37,45 @@ namespace REST.ModelORM.Repository
             return doctorModel;
 
             #endregion
+        }
+
+        public List<DoctorModel> GetDoctors()
+        {
+            List<DoctorModel> doctorsList = new List<DoctorModel>();
+            var doctors = Items.ToList();
+
+            foreach (var doctor in doctors)
+            {
+                DoctorModel element = new DoctorModel
+                {
+                    id = doctor.id,
+                    Name = doctor.Name,
+                    Surname = doctor.Surname,
+                    City = doctor.City,
+                    Specialization = doctor.Specialization
+                };
+
+                foreach (var comment in doctor.Comments)
+                {
+                    element.Opinion.Add(comment.Description);
+                }
+
+                foreach (var visit in doctor.Visits)
+                {
+                    VisitModel vis = new VisitModel
+                    {
+                        id = visit.id,
+                        Date = visit.Date,
+                        IsFree = visit.IsFree
+                    };
+
+                    element.Visits.Add(vis);
+                }
+
+                doctorsList.Add(element);
+            }
+
+            return doctorsList;
         }
     }
 }

@@ -7,11 +7,11 @@
       <Diagram DiagramId="bdbfd02520d64e6caedbdd7c0b758dbe" Name="Diagram1">
         <EntityTypeShape EntityType="RESTModel.Comment" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
         <EntityTypeShape EntityType="RESTModel.Doctor" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="RESTModel.Patient" Width="1.5" PointX="0.75" PointY="7.5" IsExpanded="true" />
         <EntityTypeShape EntityType="RESTModel.Visit" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
         <AssociationConnector Association="RESTModel.FK_Comments_Doctors" ManuallyRouted="false" />
         <AssociationConnector Association="RESTModel.FK_Visits_Doctors" ManuallyRouted="false" />
-        <AssociationConnector Association="RESTModel.FK_Visits_Patients" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="RESTModel.Patient" Width="1.5" PointX="5.375" PointY="0.875" />
+        <AssociationConnector Association="RESTModel.FK_Visits_Patients" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

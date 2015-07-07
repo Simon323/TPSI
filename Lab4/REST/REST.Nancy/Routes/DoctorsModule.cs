@@ -13,29 +13,15 @@ using System.Linq;
 using System.Web;
 using System.Xml.Linq;
 using Nancy.ModelBinding;
+using REST.ModelORM.Repository.IRepository;
+using REST.ModelORM.Repository;
 
 namespace REST.Nancy.Routes
 {
     public class DoctorsModule :NancyModule
     {
-        public DoctorsModule() : base("/doctors")
+        public DoctorsModule() : base("/doctor")
         {
-
-            //Get["/"] = parameters =>
-            //{
-            //    Rest.ModelORM.Repository.IRepository.IDoctorsRepository doctorsRepository = new Rest.ModelORM.Repository.DoctorsRepository();
-            //    var doctorsList = doctorsRepository.GetAll().ToList();
-            //    JavaScriptSerializer js = new JavaScriptSerializer();
-
-            //    string json = js.Serialize(doctorsList);
-            //    var response = (Response)json;
-
-            //    response.ContentType = "application/json";
-            //    response.StatusCode = HttpStatusCode.OK;
-
-            //    return response;
-            //};
-
             Get["/specialization/{specialization}/{city}"] = parameters =>
             {
                 IDoctorRepository doctorRepository = new DoctorRepository();

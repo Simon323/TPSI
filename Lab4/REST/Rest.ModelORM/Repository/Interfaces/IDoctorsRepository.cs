@@ -12,6 +12,6 @@ namespace REST.ModelORM.Repository.IRepository
     {
         List<Doctor> GetDoctorsByCityAndSpecialization(string city, string specialization);
         DoctorModel GetDoctorInformationById(int id);
-        IQueryable<Doctor> GetAll();
+        List<DoctorModel> GetDoctors();
     }
 }

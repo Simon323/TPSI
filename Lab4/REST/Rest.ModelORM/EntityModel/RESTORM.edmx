@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="RESTModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="RESTModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Comments">
           <Key>
             <PropertyRef Name="id" />
@@ -39,7 +39,7 @@
           <Property Name="DoctorId" Type="int" Nullable="false" />
           <Property Name="Date" Type="date" Nullable="false" />
           <Property Name="IsFree" Type="bit" Nullable="false" />
-          <Property Name="PatientId" Type="int" Nullable="false" />
+          <Property Name="PatientId" Type="int" />
         </EntityType>
         <Association Name="FK_Comments_Doctors">
           <End Role="Doctors" Type="Self.Doctors" Multiplicity="1" />
@@ -66,7 +66,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Visits_Patients">
-          <End Role="Patients" Type="Self.Patients" Multiplicity="1" />
+          <End Role="Patients" Type="Self.Patients" Multiplicity="0..1" />
           <End Role="Visits" Type="Self.Visits" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Patients">
@@ -95,8 +95,7 @@
             <End Role="Visits" EntitySet="Visits" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="RESTModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -121,15 +120,6 @@
           <NavigationProperty Name="Comments" Relationship="Self.FK_Comments_Doctors" FromRole="Doctors" ToRole="Comments" />
           <NavigationProperty Name="Visits" Relationship="Self.FK_Visits_Doctors" FromRole="Doctors" ToRole="Visits" />
         </EntityType>
-        <EntityType Name="Patient">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Surname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Visits" Relationship="Self.FK_Visits_Patients" FromRole="Patients" ToRole="Visits" />
-        </EntityType>
         <EntityType Name="Visit">
           <Key>
             <PropertyRef Name="id" />
@@ -138,9 +128,9 @@
           <Property Name="DoctorId" Type="Int32" Nullable="false" />
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="IsFree" Type="Boolean" Nullable="false" />
-          <Property Name="PatientId" Type="Int32" Nullable="false" />
+          <Property Name="PatientId" Type="Int32" />
           <NavigationProperty Name="Doctor" Relationship="Self.FK_Visits_Doctors" FromRole="Visits" ToRole="Doctors" />
-          <NavigationProperty Name="Patient" Relationship="Self.FK_Visits_Patients" FromRole="Visits" ToRole="Patients" />
+          <NavigationProperty Name="Patient" Relationship="RESTModel.FK_Visits_Patients" FromRole="Visit" ToRole="Patient" />
         </EntityType>
         <Association Name="FK_Comments_Doctors">
           <End Role="Doctors" Type="Self.Doctor" Multiplicity="1" />
@@ -166,22 +156,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Visits_Patients">
-          <End Role="Patients" Type="Self.Patient" Multiplicity="1" />
-          <End Role="Visits" Type="Self.Visit" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Patients">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Visits">
-              <PropertyRef Name="PatientId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="RESTEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Comments" EntityType="Self.Comment" />
           <EntitySet Name="Doctors" EntityType="Self.Doctor" />
-          <EntitySet Name="Patients" EntityType="Self.Patient" />
           <EntitySet Name="Visits" EntityType="Self.Visit" />
           <AssociationSet Name="FK_Comments_Doctors" Association="Self.FK_Comments_Doctors">
             <End Role="Doctors" EntitySet="Doctors" />
@@ -191,11 +168,33 @@
             <End Role="Doctors" EntitySet="Doctors" />
             <End Role="Visits" EntitySet="Visits" />
           </AssociationSet>
-          <AssociationSet Name="FK_Visits_Patients" Association="Self.FK_Visits_Patients">
-            <End Role="Patients" EntitySet="Patients" />
-            <End Role="Visits" EntitySet="Visits" />
+          <EntitySet Name="Patients" EntityType="RESTModel.Patient" />
+          <AssociationSet Name="FK_Visits_Patients" Association="RESTModel.FK_Visits_Patients">
+            <End Role="Patient" EntitySet="Patients" />
+            <End Role="Visit" EntitySet="Visits" />
           </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Patient">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Surname" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Visits" Relationship="RESTModel.FK_Visits_Patients" FromRole="Patient" ToRole="Visit" />
+        </EntityType>
+        <Association Name="FK_Visits_Patients">
+          <End Type="RESTModel.Patient" Role="Patient" Multiplicity="0..1" />
+          <End Type="RESTModel.Visit" Role="Visit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patient">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Visit">
+              <PropertyRef Name="PatientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -222,15 +221,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Patients">
-            <EntityTypeMapping TypeName="RESTModel.Patient">
-              <MappingFragment StoreEntitySet="Patients">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Surname" ColumnName="Surname" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Visits">
             <EntityTypeMapping TypeName="RESTModel.Visit">
               <MappingFragment StoreEntitySet="Visits">
@@ -239,6 +229,15 @@
                 <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="IsFree" ColumnName="IsFree" />
                 <ScalarProperty Name="PatientId" ColumnName="PatientId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Patients">
+            <EntityTypeMapping TypeName="RESTModel.Patient">
+              <MappingFragment StoreEntitySet="Patients">
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

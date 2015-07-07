@@ -1,34 +1,31 @@
 ﻿
-<div ng-app="helloApp">
+@*<div ng-app="SPAApp">
+
     <script>
-        var app = angular.module("helloApp", []);
-        app.controller("HelloWorld", function ($scope, $http) {
+        var app = angular.module("SPAApp", []);
+        app.controller("MainController", function ($scope, $http) {
             $scope.hello = [];
             $scope.addString = function () {
                 $scope.hello.push($scope.word);
                 $scope.word = "";
             };
 
-            $scope.getDoctors = function () {
-                //$.ajax({
-                //    method: "GET",
-                //    url: "http://localhost:7822/doctors/1",
-                //    success: function (element) {
-                //        $scope.zmienna = "jakis napis";
-                //        console.log(element);
-                //    }
-                //});
-                $http.get("http://localhost:7822/doctors/1").success(function (data) {
-                    $scope.zmienna = data;
-                });
-                
-            };            
+            //$scope.getDoctors = function () {
+            //    $http.get("http://localhost:7822/doctors").success(function (data) {
+            //        $scope.zmienna = data;
+            //    });
+            //};
+
+            $http.get("http://localhost:7822/doctors").success(function (data) {
+                $scope.zmienna = data;
+            });
         });
     </script>
 
-    <div ng-controller="HelloWorld">
-        <input type="text" ng-model="hello">
-            {{ hello }} 
+
+    <div ng-controller="MainController">
+        <!--<input type="text" ng-model="hello">
+        {{ hello }}
 
         <ul>
             <li ng-repeat="h in hello">{{ h }}</li>
@@ -37,32 +34,60 @@
         <form ng-submit="addString()">
             <input type="text" ng-model="word">
             <input type="submit" value="dodaj">
-        </form>
+        </form>-->
 
-        <button ng-click="getDoctors()">kliknij tu</button>
-        {{ zmienna }}
+        <!--<button ng-click="getDoctors()">kliknij tu</button>-->
+        
+
+        <ul ng-repeat="zm in zmienna">
+            <li>{{zm.id}}</li>
+        </ul>
+
+        {{zmienna}}
+        
 
     </div>
 
+</div>*@
+
+
+<div data-ng-app="AngularExample">
+    <div data-ng-view>
+        Loading...
+    </div>
 </div>
 
-<script>
-    $(document).ready(function () {
-        //$.ajax({
-        //    method: "POST",
-        //    data: {Name: "adam", Surname: "monroe"},
-        //    url: "http://localhost:7822/doctors/1/opinion",
-        //    success: function () {
-        //        alert("Udało się ");
-        //    }
-        //});
+<script type="text/javascript" charset="utf-8">
 
-        //$.ajax({
-        //    method: "GET",
-        //    url: "http://localhost:7822/doctors/1",
-        //    success: function (element) {
-        //        console.log(element);
-        //    }
-        //});
+    angular.module('AngularExample', ['ngRoute']).config(['$routeProvider',
+        function ($routeProvider) {
+            $routeProvider
+                .when('/', {
+                    templateUrl: 'example.html',
+                    controller: 'exampleController'
+                }, null)
+                .when('/list', {
+                    templateUrl: 'list.html',
+                    controller: 'exampleController'
+                }, null);
+        }]);
+
+    angular.module('AngularExample').controller('exampleController', function ($scope) {
+        $scope.message = 'Hello world!';
+        $scope.list = [
+            {
+                firstName: 'John',
+                lastName: 'Doe'
+            },
+            {
+                firstName: 'Mark',
+                lastName: 'Smith'
+            },
+            {
+                firstName: 'James',
+                lastName: 'Mole'
+            }
+        ];
     });
+
 </script>
