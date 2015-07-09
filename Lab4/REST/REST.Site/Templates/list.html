@@ -1,4 +1,30 @@
-<div data-ng-controller="detailsController">
-    {{nazwa}}
-    <a href="/#/">Go back</a>
+<div data-ng-controller="listController">
+    
+    <div class="container-fluid">
+        <div class="row" ng-repeat="doctor in doctors">
+            <div class="col-xs-2">
+                Imie: {{doctor.Name}}
+            </div>
+            <div class="col-xs-3">
+                Nazwisko: {{doctor.Surname}}
+            </div>
+            <div class="col-xs-3">
+                Miasto: {{doctor.City}}
+            </div>
+            <div class="col-xs-3">
+                Specjalizacja: {{doctor.Specialization}}
+            </div>
+            <div class="col-xs-1">
+                <a href="/#details/{{doctor.id}}" class="btn btn-info">...</a>
+                
+            </div>
+        </div>
+    </div>
+    <a href="/#details">Show list</a>
 </div>
+
+<style>
+    .row > div{
+        height:50px;
+    }
+</style>

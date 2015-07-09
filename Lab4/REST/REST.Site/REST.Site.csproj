@@ -864,8 +864,8 @@
     <Content Include="SPA\controller.js" />
     <Content Include="SPA\module.js" />
     <Content Include="SPA\routes.js" />
-    <Content Include="Templates\example.html" />
     <Content Include="Templates\list.html" />
+    <Content Include="Templates\details.html" />
     <Content Include="Web.config" />
     <Content Include="Scripts\jquery-1.9.0.min.map" />
   </ItemGroup>

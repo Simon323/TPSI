@@ -28,10 +28,27 @@ namespace REST.ModelORM.Repository
 
             doctorModel.Name = doctor.Name;
             doctorModel.Surname = doctor.Surname;
+            doctorModel.City = doctor.City;
+            doctorModel.Specialization = doctor.Specialization;
 
             foreach (var element in doctor.Comments)
             {
-                doctorModel.Opinion.Add(element.Description);
+                doctorModel.Opinion.Add(new CommentModel
+                {
+                    Desctiption = element.Description,
+                    Date = element.Date
+                });
+            }
+
+            foreach (var elemement in doctor.Visits)
+            {
+                doctorModel.Visits.Add(new VisitModel
+                {
+                    id = elemement.id,
+                    PatientId = elemement.PatientId.GetValueOrDefault(),
+                    IsFree = elemement.IsFree,
+                    Date = elemement.Date
+                });
             }
 
             return doctorModel;
@@ -57,7 +74,11 @@ namespace REST.ModelORM.Repository
 
                 foreach (var comment in doctor.Comments)
                 {
-                    element.Opinion.Add(comment.Description);
+                    element.Opinion.Add(new CommentModel
+                    {
+                        Desctiption = comment.Description,
+                        Date = comment.Date
+                    });
                 }
 
                 foreach (var visit in doctor.Visits)

@@ -11,9 +11,9 @@ namespace REST.Nancy.Routes
 {
     public class SPAModule : NancyModule
     {
-        public SPAModule() : base("/doctors")
+        public SPAModule()
         {
-            Get["/"] = parameters =>
+            Get["/doctors"] = parameters =>
             {
                 IDoctorsRepository doctorRepository = new DoctorsRepository();
                 JavaScriptSerializer js = new JavaScriptSerializer();
@@ -29,6 +29,25 @@ namespace REST.Nancy.Routes
 
                 return response;
             };
+
+            Get["/doctor/{id}"] = parameters =>
+            {
+                IDoctorsRepository doctorRepository = new DoctorsRepository();
+                JavaScriptSerializer js = new JavaScriptSerializer();
+
+                var doctorsList = doctorRepository.GetDoctorInformationById(parameters.id);
+
+                string json = js.Serialize(doctorsList);
+
+                var response = (Response)json;
+
+                response.ContentType = "application/json";
+                response.StatusCode = HttpStatusCode.OK;
+
+                return response;
+            };
         }
+
+
     }
 }

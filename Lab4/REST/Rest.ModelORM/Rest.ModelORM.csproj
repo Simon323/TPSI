@@ -78,6 +78,7 @@
     <Compile Include="EntityModel\Visit.cs">
       <DependentUpon>RESTORM.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\CommentModel.cs" />
     <Compile Include="Models\DoctorModel.cs" />
     <Compile Include="Models\VisitModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

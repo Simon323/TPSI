@@ -11,7 +11,7 @@ namespace REST.ModelORM.Model
     {
         public DoctorModel()
         {
-            Opinion = new List<string>();
+            Opinion = new List<CommentModel>();
             Visits = new List<VisitModel>();
         }
         public int id { get; set; }
@@ -19,7 +19,7 @@ namespace REST.ModelORM.Model
         public string Surname { get; set; }
         public string City { get; set; }
         public string Specialization { get; set; }
-        public List<string> Opinion { get; set; }
+        public List<CommentModel> Opinion { get; set; }
         public List<VisitModel> Visits { get; set; }
     }
 }

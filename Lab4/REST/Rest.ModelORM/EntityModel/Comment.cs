@@ -17,6 +17,7 @@ namespace REST.ModelORM.EntityModel
         public int id { get; set; }
         public int DoctorId { get; set; }
         public string Description { get; set; }
+        public System.DateTime Date { get; set; }
     
         public virtual Doctor Doctor { get; set; }
     }
