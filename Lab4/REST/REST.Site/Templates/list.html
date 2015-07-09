@@ -2,12 +2,21 @@
     
     <div class="container-fluid">
 
+        <div class="row">
+            <div class="col-xs-12 center">
+                <form class="form-inline">
+                    <input ng-model="query" type="text"
+                           placeholder="Filter by" autofocus>
+                </form>
+            </div>
+        </div>
+
             <accordion close-others="oneAtATime">
 
-                <accordion-group ng-repeat="doctor in doctors">
+                <accordion-group ng-repeat="doctor in doctors  | filter:query">
                     <accordion-heading>
                         {{doctor.Name}} {{doctor.Surname}}
-                         <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+                        <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
                     </accordion-heading>
                     <div class="row">
                         <div class="col-xs-5">
@@ -33,5 +42,17 @@
 <style>
     .row > div{
         height:50px;
+    }
+
+    .row.ng-scope{
+        text-align:center;
+    }
+
+    .panel-heading{
+        text-align:center;
+    }
+
+    .center{
+        text-align:center;
     }
 </style>

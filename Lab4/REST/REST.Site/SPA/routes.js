@@ -1,6 +1,3 @@
-/**
- * Created by Bartłomiej on 2014-08-25.
- */
 app.config(['$routeProvider',
     function($routeProvider) {
         $routeProvider

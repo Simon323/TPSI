@@ -1,16 +1,16 @@
 <div data-ng-controller="detailsController">
 
-    <accordion close-others="oneAtATime">
-        
-        <accordion-group  ng-repeat="group in groups">
-            <accordion-heading>
-                I can have markup, too! <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
-            </accordion-heading>
-            {{group.content}}
-        </accordion-group>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-3">Imie: {{doctor.Name}}</div>
+            <div class="col-xs-3">Nazwisko: {{doctor.Surname}}</div>
+            <div class="col-xs-3">Miasto: {{doctor.City}}</div>
+            <div class="col-xs-3">Specializacja: {{doctor.Specialization}}</div>
+        </div>
+        <div class="row">
 
-    </accordion>
-
+        </div>
+    </div>
 
     <a href="/#/">Go back</a>
 </div>
