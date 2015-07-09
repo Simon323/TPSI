@@ -1,16 +1,48 @@
 <div data-ng-controller="detailsController">
 
     <div class="container">
-        <div class="row">
-            <div class="col-xs-3">Imie: {{doctor.Name}}</div>
-            <div class="col-xs-3">Nazwisko: {{doctor.Surname}}</div>
-            <div class="col-xs-3">Miasto: {{doctor.City}}</div>
-            <div class="col-xs-3">Specializacja: {{doctor.Specialization}}</div>
+        <div class="row center bold">
+            <div class="col-xs-3">Imie</div>
+            <div class="col-xs-3">Nazwisko</div>
+            <div class="col-xs-3">Miasto</div>
+            <div class="col-xs-3">Specializacja</div>
         </div>
-        <div class="row">
+        <div class="row center">
+            <div class="col-xs-3">{{doctor.Name}}</div>
+            <div class="col-xs-3">{{doctor.Surname}}</div>
+            <div class="col-xs-3">{{doctor.City}}</div>
+            <div class="col-xs-3">{{doctor.Specialization}}</div>
+        </div>
+        <div class="row center">
+            <tabset justified="true">
+                <tab heading="Opinie">
+                    <div class="row">
+                        <div class="col-xs-6">Komentarz</div>
+                        <div class="col-xs-6">Data dodania</div>
+                    </div>
+                    <div class="row" ng-repeat="comment in doctor.Opinion">
+                        <div class="col-xs-6">{{comment.Desctiption}}</div>
+                        <div class="col-xs-6">{{comment.Date  | jsDate | date:"yyyy-MM-dd" }}</div>
+                    </div>
+                </tab>
+                <tab heading="Wizyty">
+                    <div class="row">
 
+                    </div>
+                </tab>
+            </tabset>
         </div>
     </div>
 
-    <a href="/#/">Go back</a>
+    <a href="/#/">back</a>
 </div>
+
+<style>
+    .center{
+        text-align:center;
+    }
+
+    .bold{
+        font-weight: 900;
+    }
+</style>
